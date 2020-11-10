@@ -51,7 +51,7 @@ function createUser($username, $password)
     global $db;
 
     try {
-        $query = "INSERT INTO users (username, password) VALUES (:username, :password, 2)";
+        $query = "INSERT INTO users (username, password) VALUES (:username, :password)";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);

@@ -17,11 +17,16 @@ function saveUser($user)
 
 function requireAuth()
 {
-
     if(!isAuthenticated()){
         global $session;
         $session->getFlashBag()->add('error', 'Not Authorized');
         redirect('/login.php');
 
     }
+}
+
+function getAuthenticatedUser(){
+
+    global $session;
+    return findUserById($session->get('auth_user_id'));
 }
