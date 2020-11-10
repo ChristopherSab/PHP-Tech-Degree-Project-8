@@ -6,7 +6,7 @@ function isAuthenticated()
     return $session->get('auth_logged_in', false);
 }
 
-function saveUser($user)
+function saveUserSession($user)
 {
     global $session;
     $session->set('auth_logged_in', true);
@@ -29,4 +29,15 @@ function getAuthenticatedUser(){
 
     global $session;
     return findUserById($session->get('auth_user_id'));
+}
+
+function isOwner($ownerId)
+{
+    if(!isAuthenticated())
+    {
+        return false;
+    }
+    global $session;
+    
+    return $ownerId == $session->get('auth_user_id');
 }

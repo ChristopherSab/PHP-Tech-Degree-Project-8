@@ -16,6 +16,6 @@ if(!password_verify(request()->get('password'), $user['password']))
     redirect('/login.php');
 }
 
-saveUser($user);
+saveUserSession($user);
 redirect('/');
 
