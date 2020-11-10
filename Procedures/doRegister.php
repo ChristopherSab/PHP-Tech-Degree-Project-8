@@ -22,6 +22,7 @@ if(!empty($user))
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 
 $user = createUser($username, $hashed);
+saveUser($user);
 
 $session->getFlashBag()->add('success', 'User Added');
 
