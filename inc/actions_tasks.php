@@ -1,5 +1,7 @@
 <?php
 require_once "bootstrap.php";
+requireAuth();
+
 
 $action = request()->get('action');
 $task_id = request()->get('task_id');
