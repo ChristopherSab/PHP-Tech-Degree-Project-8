@@ -32,13 +32,13 @@ if(!password_verify($currentPassword, $user['password']))
 $hashed = password_hash($newPassword, PASSWORD_DEFAULT);
 
 
- if(!updatePassword($password, $user['id']))
+ if(!updatePassword($hashed, $user['user_id']))
  {
     $session->getFlashBag()->add('error', 'Could not update password, please try again');
     redirect('/account.php');
  }
 
- $session-getFlashBag()->add('success', 'Password updated successfully');
+ $session->getFlashBag()->add('success', 'Password updated successfully');
 
  redirect('/account.php');
 

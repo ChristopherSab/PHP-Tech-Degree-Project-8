@@ -36,7 +36,7 @@ function findUserById($userId)
     global $db;
 
     try {
-        $query = "SELECT * FROM users WHERE id = :userId";
+        $query = "SELECT * FROM users WHERE user_id = :userId";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
@@ -66,7 +66,7 @@ function updatePassword($password, $userId)
     global $db;
 
     try {
-        $query = 'UPDATE users SET password = :password WHERE id = :userId';
+        $query = 'UPDATE users SET password = :password WHERE user_id = :userId';
         $stmt = $db->prepare($query);
         $stmt->bindParam(':password', $password);
         $stmt->bindParam(':userId', $userId);

@@ -40,14 +40,17 @@ function getTask($task_id)
     }
     return $task;
 }
-function createTask($data)
+
+
+function createTask($data, $user_id)
 {
     global $db;
 
     try {
-        $statement = $db->prepare('INSERT INTO tasks (task, status) VALUES (:task, :status)');
-        $statement->bindParam('task', $data['task']);
-        $statement->bindParam('status', $data['status']);
+        $statement = $db->prepare('INSERT INTO tasks (task, status, user_id) VALUES (:task, :status, :user_id)');
+        $statement->bindParam(':task', $data['task']);
+        $statement->bindParam(':status', $data['status']);
+        $statement->bindParam(':user_id', $owner_id);
         $statement->execute();
     } catch (Exception $e) {
         echo "Error!: " . $e->getMessage() . "<br />";
@@ -55,6 +58,11 @@ function createTask($data)
     }
     return getTask($db->lastInsertId());
 }
+
+
+
+
+
 function updateTask($data)
 {
     global $db;

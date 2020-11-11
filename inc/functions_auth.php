@@ -10,7 +10,7 @@ function saveUserSession($user)
 {
     global $session;
     $session->set('auth_logged_in', true);
-    $session->set('auth_user_id', (int) $user['id']);
+    $session->set('auth_user_id', (int) $user['user_id']);
 
     $session->getFlashBag()->add('success', 'Successfully Logged In');
 }
@@ -38,6 +38,7 @@ function isOwner($ownerId)
         return false;
     }
     global $session;
-    
+
     return $ownerId == $session->get('auth_user_id');
+
 }
